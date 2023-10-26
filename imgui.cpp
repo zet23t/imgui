@@ -3704,6 +3704,7 @@ void ImGui::Shutdown()
     g.DrawChannelsTempMergeBuffer.clear();
 
     g.MultiSelectStorage.Clear();
+    g.MultiSelectTempData.clear_destruct();
 
     g.ClipboardHandlerData.clear();
     g.MenusIdSubmittedThisFrame.clear();
@@ -3852,6 +3853,8 @@ void ImGui::GcCompactTransientMiscBuffers()
     ImGuiContext& g = *GImGui;
     g.ItemFlagsStack.clear();
     g.GroupStack.clear();
+    g.MultiSelectTempDataStacked = 0;
+    g.MultiSelectTempData.clear_destruct();
     TableGcCompactSettings();
 }
 
